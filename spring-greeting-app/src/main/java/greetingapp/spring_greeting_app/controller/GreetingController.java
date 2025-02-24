@@ -2,6 +2,7 @@ package greetingapp.spring_greeting_app.controller;
 
 
 import greetingapp.spring_greeting_app.dto.GreetingDTO;
+import greetingapp.spring_greeting_app.dto.UserDTO;
 import greetingapp.spring_greeting_app.service.GreetingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -23,15 +24,13 @@ public class GreetingController {
     // GET API - Fetch the greeting message
     @GetMapping
     public GreetingDTO getGreeting() {
-
         return greeting;
     }
 
     // POST API - Set a new greeting message
     @PostMapping
-    public String setGreeting(@RequestBody GreetingDTO newGreeting) {
-        greeting.setMessage(newGreeting.getMessage());
-        return "✅ Greeting updated successfully!";
+    public GreetingDTO setGreeting(@RequestBody UserDTO newGreeting) {
+        return new GreetingDTO("Hello " + newGreeting.getFirstName() + " " + newGreeting.getLastName());
     }
 
     // PUT API - Update the greeting message
