@@ -3,6 +3,7 @@ package greetingapp.spring_greeting_app.controller;
 
 import greetingapp.spring_greeting_app.dto.GreetingDTO;
 import greetingapp.spring_greeting_app.dto.UserDTO;
+import greetingapp.spring_greeting_app.entity.GreetingEntity;
 import greetingapp.spring_greeting_app.service.GreetingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -28,9 +29,15 @@ public class GreetingController {
     }
 
     // POST API - Set a new greeting message
-    @PostMapping
-    public GreetingDTO setGreeting(@RequestBody UserDTO newGreeting) {
-        return new GreetingDTO("Hello " + newGreeting.getFirstName() + " " + newGreeting.getLastName());
+    @PostMapping("/addUser")
+    public GreetingEntity setGreeting(@RequestBody UserDTO newGreeting) {
+        return greetingService.saveGreeting("Hello " + newGreeting.getFirstName() + " " + newGreeting.getLastName());
+    }
+
+    //  POST API - accept JSON and save greeting message
+    @PostMapping("/add")
+    public GreetingEntity saveGreeting(@RequestBody GreetingDTO greetingDTO) {
+        return greetingService.saveGreeting(greetingDTO.getMessage());
     }
 
     // PUT API - Update the greeting message

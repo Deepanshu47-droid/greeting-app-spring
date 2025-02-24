@@ -1,61 +1,35 @@
-🚀 UC3: Personalized Greeting Message with UserDTO (POST Request)
+🚀 UC4: Storing Greeting Messages in the Database
 
 📌 Objective
 
-🔹 Implement UserDTO to handle user data for generating a personalized greeting.
+🔹 Implement a Greeting Repository to store greeting messages.
 
-🔹 Update the POST request (/greeting) to accept UserDTO as input.
+🔹 Save each generated greeting message in a MySQL database.
 
+🔹 Retrieve stored messages through API calls.
 
-⚙️ Implementation Steps
+🛠 Steps to Implement
 
-✅ Create UserDTO with firstName and lastName attributes.
+✅ Add MySQL Dependency – Ensure required dependencies for database connectivity are included.
 
-✅ Modify GreetingController to accept UserDTO in the request body.
+✅ Configure MySQL Database – Set up database properties like URL, username, and password in the application configuration.
 
-✅ Generate a greeting message based on the provided attributes.
+✅ Create MySQL Database – Set up a new database to store greeting messages.
 
+✅ Define GreetingEntity – Create an entity class representing stored messages.
 
-🔬 Testing Using cURL
+✅ Implement GreetingRepository – Extend repository interface to interact with the database.
 
-📌 Full Name Greeting:
+✅ Modify GreetingService – Ensure messages are stored before responding to API requests.
 
-curl -X POST "http://localhost:8080/greeting" \
-
-     -H "Content-Type: application/json" \
-
-     -d '{"firstName": "Raj", "lastName": "Sharma"}'
-
-📌 First Name Only:
-
-
-curl -X POST "http://localhost:8080/greeting" \
-
-     -H "Content-Type: application/json" \
-
-     -d '{"firstName": "Raj"}'
-
-📌 Last Name Only:
-
-curl -X POST "http://localhost:8080/greeting" \
-
-     -H "Content-Type: application/json" \
-
-     -d '{"lastName": "Sharma"}'
-
-📌 Default Greeting (No Name Provided):
-
-
-curl -X POST "http://localhost:8080/greeting" \
-
-     -H "Content-Type: application/json" \
-
-     -d '{}'
+✅ Test the API – Use Postman or cURL to save and retrieve greeting messages.
 
 🎯 Key Benefits
 
-✅ Uses DTO for Better Data Handling
+✅ Persistent Storage – Saves messages in MySQL for future access.
 
-✅ More Organized and Reusable Code
+✅ Data Consistency – Ensures reliable message retrieval.
 
-✅ Easier Future Enhancements
+✅ Scalability – Supports efficient message management in larger applications.
+
+Let me know if you need modifications! 🚀🔥
