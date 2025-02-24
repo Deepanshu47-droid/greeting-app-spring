@@ -1,60 +1,59 @@
-🚀 UC6: List All Greeting Messages
+📝 UC7: Edit a Greeting Message in the Repository
 
 🎯 Objective
 
-Enable the application to retrieve and display all stored greeting messages from the database.
+Enable the Greeting App to update an existing greeting message in the database using its ID.
+
 
 🛠 Implementation Steps
 
-✅ Step 1: Update Greeting Repository
+✅ Step 1: Update the Greeting Repository
 
-Extend JpaRepository to provide built-in methods for fetching all records.
+Extend JpaRepository to include a method for finding a greeting by ID.
 
-✅ Step 2: Modify Greeting Service
+✅ Step 2: Modify the Greeting Service
 
-Implement a method to retrieve all greeting messages from the database.
+Implement a method to retrieve a greeting by ID.
 
-Ensure it returns an empty list if no messages are found.
+Update the message if the greeting exists.
 
 ✅ Step 3: Create API Endpoint in Controller
 
+Define a PUT API endpoint to edit an existing greeting.
 
-Define a GET API endpoint that fetches all greetings.
+Fetch the greeting by ID, update its message, and save it back.
 
-Call the service method and return the list of messages.
+🔗 API Endpoints
 
-✅ Step 4: Test the API
+1️⃣ Edit a Greeting Message
 
+🔹 Endpoint:
 
-🔹 Fetch All Greeting Messages using cURL or Postman:
-
-GET http://localhost:8080/greeting/find/all
+PUT http://localhost:8080/greeting/edit/{id}?newMessage=Hello, Updated!
 
 🔹 Example Request:
 
-curl -X GET "http://localhost:8080/greet/find/all"
+curl -X PUT "http://localhost:8080/greeting/edit/1?newMessage=Hello, Deepanshu!"
 
-🔹 Expected Example Response (if greetings exist):
+🔹 Expected Response (if ID exists):
 
-[
-    {
-        "id": 1,
-        "message": "Hello, Deepanshu!"
-    },
-    {
-        "id": 2,
-        "message": "Welcome to the Greeting App!"
-    }
-]
+{
+"id": 1,
+"message": "Hello, Deepanshu!"
+}
 
-🔹 Response if no messages are found:
+🔹 If ID does not exist:
 
-[]
+{
+"error": "Greeting not found!"
+}
 
 🎯 Key Benefits
 
-✅ Enables retrieval of all stored greetings
+✅ Allows modification of existing greeting messages
 
-✅ Enhances API functionality and data visibility
+✅ Ensures data integrity in the repository
 
-✅ Handles empty database scenarios smoothly   
+✅ Provides an easy way to update user messages
+
+This ensures that your Greeting App now supports updating messages dynamically! 🚀

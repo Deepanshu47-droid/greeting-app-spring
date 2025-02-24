@@ -47,11 +47,10 @@ public class GreetingController {
         return greetingService.saveGreeting(greetingDTO.getMessage());
     }
 
-    // PUT API - Update the greeting message
-    @PutMapping
-    public String updateGreeting(@RequestBody GreetingDTO updatedGreeting) {
-        greeting.setMessage(updatedGreeting.getMessage());
-        return "✅ Greeting modified successfully!";
+    //PUT API to update a greeting message
+    @PutMapping("/edit/{id}/")
+    public GreetingEntity editGreeting(@PathVariable Long id, @RequestParam String newMessage) {
+        return greetingService.updateGreeting(id, newMessage);
     }
 
     // DELETE API - Reset the greeting to default

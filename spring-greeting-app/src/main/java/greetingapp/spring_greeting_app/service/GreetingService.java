@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class GreetingService {
@@ -26,6 +27,16 @@ public class GreetingService {
     // Method to fetch all greetings
     public List<GreetingEntity> getAllGreetings() {
         return greetingRepository.findAll();
+    }
+    // Method to update a greeting message
+    public GreetingEntity updateGreeting(Long id, String newMessage) {
+        Optional<GreetingEntity> optionalGreeting = greetingRepository.findById(id);
+        if (optionalGreeting.isPresent()) {
+            GreetingEntity greeting = optionalGreeting.get();
+            greeting.setMessage(newMessage);
+            return greetingRepository.save(greeting);
+        }
+        return null;
     }
 
     public String getGreetingMessage() {
