@@ -53,10 +53,9 @@ public class GreetingController {
         return greetingService.updateGreeting(id, newMessage);
     }
 
-    // DELETE API - Reset the greeting to default
-    @DeleteMapping
-    public String deleteGreeting() {
-        greeting.setMessage("Hello, Welcome to Spring Boot!");
-        return "✅ Greeting reset to default!";
+    // DELETE API to delete the message
+    @DeleteMapping("/delete/{id}")
+    public String deleteGreeting(@PathVariable Long id) {
+        return greetingService.deleteGreetingById(id);
     }
 }

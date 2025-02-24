@@ -1,45 +1,41 @@
-📝 UC7: Edit a Greeting Message in the Repository
+📝 UC8: Delete a Greeting Message from the Repository
 
 🎯 Objective
 
-Enable the Greeting App to update an existing greeting message in the database using its ID.
-
+Enable the Greeting App to delete an existing greeting message from the database using its ID.
 
 🛠 Implementation Steps
 
 ✅ Step 1: Update the Greeting Repository
 
-Extend JpaRepository to include a method for finding a greeting by ID.
+Extend JpaRepository to include a method for deleting a greeting by ID.
 
 ✅ Step 2: Modify the Greeting Service
 
-Implement a method to retrieve a greeting by ID.
+Implement a method to find and delete a greeting by ID.
 
-Update the message if the greeting exists.
+Handle cases where the greeting ID does not exist.
 
 ✅ Step 3: Create API Endpoint in Controller
 
-Define a PUT API endpoint to edit an existing greeting.
-
-Fetch the greeting by ID, update its message, and save it back.
+Define a DELETE API endpoint to remove a greeting from the repository.
 
 🔗 API Endpoints
 
-1️⃣ Edit a Greeting Message
+1️⃣ Delete a Greeting Message
 
 🔹 Endpoint:
 
-PUT http://localhost:8080/greeting/edit/{id}?newMessage=Hello, Updated!
+DELETE http://localhost:8080/greeting/delete/{id}
 
 🔹 Example Request:
 
-curl -X PUT "http://localhost:8080/greeting/edit/1?newMessage=Hello, Deepanshu!"
+curl -X DELETE "http://localhost:8080/greeting/delete/1"
 
 🔹 Expected Response (if ID exists):
 
 {
-"id": 1,
-"message": "Hello, Deepanshu!"
+"message": "Greeting with ID 1 deleted successfully!"
 }
 
 🔹 If ID does not exist:
@@ -50,10 +46,9 @@ curl -X PUT "http://localhost:8080/greeting/edit/1?newMessage=Hello, Deepanshu!"
 
 🎯 Key Benefits
 
-✅ Allows modification of existing greeting messages
+✅ Enables message deletion from the database
 
-✅ Ensures data integrity in the repository
+✅ Ensures proper resource management
 
-✅ Provides an easy way to update user messages
+✅ Handles invalid ID cases gracefully
 
-This ensures that your Greeting App now supports updating messages dynamically! 🚀
