@@ -23,6 +23,11 @@ public class GreetingService {
                 .orElseThrow(() -> new RuntimeException("Greeting message not found!"));
     }
 
+    // Method to fetch all greetings
+    public List<GreetingEntity> getAllGreetings() {
+        return greetingRepository.findAll();
+    }
+
     public String getGreetingMessage() {
         return "Hello World";
     }

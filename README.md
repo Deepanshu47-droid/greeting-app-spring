@@ -1,48 +1,60 @@
-🚀 UC5: Find Greeting Message by ID
+🚀 UC6: List All Greeting Messages
 
 🎯 Objective
 
-Enable the application to retrieve a specific greeting message from the database using its unique ID.
+Enable the application to retrieve and display all stored greeting messages from the database.
 
 🛠 Implementation Steps
 
 ✅ Step 1: Update Greeting Repository
 
-Extend JpaRepository to include a method for fetching a greeting by its ID.
+Extend JpaRepository to provide built-in methods for fetching all records.
 
 ✅ Step 2: Modify Greeting Service
 
-Implement a method to retrieve a greeting message by its ID.
+Implement a method to retrieve all greeting messages from the database.
 
-Handle cases where the ID does not exist by returning a meaningful response.
+Ensure it returns an empty list if no messages are found.
 
 ✅ Step 3: Create API Endpoint in Controller
 
 
-Define a GET API endpoint that accepts an ID as a path variable.
+Define a GET API endpoint that fetches all greetings.
 
-Call the service method to fetch and return the greeting message.
+Call the service method and return the list of messages.
 
 ✅ Step 4: Test the API
 
-🔹 Find Greeting Message by ID using cURL or Postman:
 
+🔹 Fetch All Greeting Messages using cURL or Postman:
 
-GET http://localhost:8080/greeting/find/{id}
+GET http://localhost:8080/greeting/find/all
 
 🔹 Example Request:
 
-curl -X GET "http://localhost:8080/greeting/find/1"
+curl -X GET "http://localhost:8080/greet/find/all"
 
-🔹 Expected Response (if found):➡️respective message for given id
+🔹 Expected Example Response (if greetings exist):
 
-🔹 Response if ID is not found: ➡️ "Greeting not found for ID: 1"
+[
+    {
+        "id": 1,
+        "message": "Hello, Deepanshu!"
+    },
+    {
+        "id": 2,
+        "message": "Welcome to the Greeting App!"
+    }
+]
 
+🔹 Response if no messages are found:
+
+[]
 
 🎯 Key Benefits
 
-✅ Enables retrieval of stored greetings
+✅ Enables retrieval of all stored greetings
 
-✅ Enhances API functionality and user interaction
+✅ Enhances API functionality and data visibility
 
-✅ Handles invalid ID scenarios gracefully
+✅ Handles empty database scenarios smoothly   

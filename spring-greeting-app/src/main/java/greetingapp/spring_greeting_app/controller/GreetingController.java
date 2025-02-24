@@ -8,6 +8,8 @@ import greetingapp.spring_greeting_app.service.GreetingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/greet")
 public class GreetingController {
@@ -28,6 +30,11 @@ public class GreetingController {
         return (greetingService.findGreetingById(id)).getMessage();
     }
 
+    //GET API to fetch all greetings
+    @GetMapping("find/all")
+    public List<GreetingEntity> listAllGreetings() {
+        return greetingService.getAllGreetings();
+    }
     // POST API - Set a new greeting message
     @PostMapping("/addUser")
     public GreetingEntity setGreeting(@RequestBody UserDTO newGreeting) {
