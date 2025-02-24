@@ -18,6 +18,10 @@ public class GreetingService {
         GreetingEntity greeting = new GreetingEntity(message);
         return greetingRepository.save(greeting);
     }
+    public GreetingEntity findGreetingById(Long id) {
+        return greetingRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Greeting message not found!"));
+    }
 
     public String getGreetingMessage() {
         return "Hello World";

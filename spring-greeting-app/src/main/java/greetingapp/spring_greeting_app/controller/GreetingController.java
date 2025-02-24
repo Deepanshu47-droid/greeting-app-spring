@@ -22,10 +22,10 @@ public class GreetingController {
     }
 
 
-    // GET API - Fetch the greeting message
-    @GetMapping
-    public GreetingDTO getGreeting() {
-        return greeting;
+    // GET API - Fetch the greeting message by id
+    @GetMapping("/find/{id}")
+    public String getGreeting(@PathVariable Long id) {
+        return (greetingService.findGreetingById(id)).getMessage();
     }
 
     // POST API - Set a new greeting message

@@ -1,35 +1,48 @@
-🚀 UC4: Storing Greeting Messages in the Database
+🚀 UC5: Find Greeting Message by ID
 
-📌 Objective
+🎯 Objective
 
-🔹 Implement a Greeting Repository to store greeting messages.
+Enable the application to retrieve a specific greeting message from the database using its unique ID.
 
-🔹 Save each generated greeting message in a MySQL database.
+🛠 Implementation Steps
 
-🔹 Retrieve stored messages through API calls.
+✅ Step 1: Update Greeting Repository
 
-🛠 Steps to Implement
+Extend JpaRepository to include a method for fetching a greeting by its ID.
 
-✅ Add MySQL Dependency – Ensure required dependencies for database connectivity are included.
+✅ Step 2: Modify Greeting Service
 
-✅ Configure MySQL Database – Set up database properties like URL, username, and password in the application configuration.
+Implement a method to retrieve a greeting message by its ID.
 
-✅ Create MySQL Database – Set up a new database to store greeting messages.
+Handle cases where the ID does not exist by returning a meaningful response.
 
-✅ Define GreetingEntity – Create an entity class representing stored messages.
+✅ Step 3: Create API Endpoint in Controller
 
-✅ Implement GreetingRepository – Extend repository interface to interact with the database.
 
-✅ Modify GreetingService – Ensure messages are stored before responding to API requests.
+Define a GET API endpoint that accepts an ID as a path variable.
 
-✅ Test the API – Use Postman or cURL to save and retrieve greeting messages.
+Call the service method to fetch and return the greeting message.
+
+✅ Step 4: Test the API
+
+🔹 Find Greeting Message by ID using cURL or Postman:
+
+
+GET http://localhost:8080/greeting/find/{id}
+
+🔹 Example Request:
+
+curl -X GET "http://localhost:8080/greeting/find/1"
+
+🔹 Expected Response (if found):➡️respective message for given id
+
+🔹 Response if ID is not found: ➡️ "Greeting not found for ID: 1"
+
 
 🎯 Key Benefits
 
-✅ Persistent Storage – Saves messages in MySQL for future access.
+✅ Enables retrieval of stored greetings
 
-✅ Data Consistency – Ensures reliable message retrieval.
+✅ Enhances API functionality and user interaction
 
-✅ Scalability – Supports efficient message management in larger applications.
-
-Let me know if you need modifications! 🚀🔥
+✅ Handles invalid ID scenarios gracefully
